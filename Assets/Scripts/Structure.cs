@@ -24,7 +24,6 @@ public class Structure : MonoBehaviour,IInfo {
     public Vector3[] grid;
     public Vector3[] fundations;
     public Transform interaction;
-    // Use this for initialization
     public bool CanPlace()
     {
         for (int i = 0; i < grid.Length; i += 2)
@@ -102,8 +101,6 @@ void OnDrawGizmosSelected()
 
     
 }
-
-    // Update is called once per frame
     public virtual void Use(Unit _user)
     {
 
