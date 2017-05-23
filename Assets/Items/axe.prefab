@@ -129,9 +129,10 @@ MonoBehaviour:
   positionOnGround: {x: -0.3, y: 0, z: -0.1}
   rotationOnGround: {x: 0, y: 45, z: 0}
   scaleOnGround: {x: 0.08, y: 0.08, z: 0.08}
-  positionInHand: {x: 0, y: 0, z: 0}
-  rotationInHand: {x: 0, y: 0, z: 0}
-  scaleInHand: {x: 0, y: 0, z: 0}
+  positionInHand: {x: -0.09, y: 0.53, z: 9.55}
+  rotationInHand: {x: 180, y: 0, z: 270}
+  scaleInHand: {x: 1, y: 1, z: 1}
+  InHand: arm_r
   positionInBackpack: {x: 5.81, y: 5.97, z: 2.7}
   rotationInBackpack: {x: 70.57, y: 172.2, z: 81.73}
   scaleInBackpack: {x: 1, y: 1, z: 1}

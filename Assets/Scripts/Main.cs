@@ -108,4 +108,8 @@ public class Main : MonoBehaviour {
     {
         return (int)(Mathf.PerlinNoise((_x/ mapCubature) * mapCubature / mapAmplitude + mapSeed, (_y/ mapCubature) * mapCubature / mapAmplitude + mapSeed)*mapLevelsCount)*mapLevelHeight+mapHeight;
     }
+    public static Vector3 Normalize(Vector3 _vec)
+    {
+        return new Vector3(Mathf.Round(_vec.x), Mathf.Round(_vec.y), Mathf.Round(_vec.z));
+    }
 }

@@ -16,6 +16,7 @@ public class ItemPatern : MonoBehaviour {
     public Vector3 positionInHand;
     public Vector3 rotationInHand;
     public Vector3 scaleInHand;
+    public string InHand;
     //inBackpack
     public Vector3 positionInBackpack;
     public Vector3 rotationInBackpack;
@@ -42,5 +43,22 @@ public class ItemPatern : MonoBehaviour {
         temp.localScale = scaleInBackpack;
         _item.mesh = temp;
 
+    }
+    public void Use(Item _item, Unit _unit)
+    {
+        Transform temp = _item.mesh;
+        temp.SetParent(_unit.transform.Find(InHand));
+        temp.localPosition = positionInHand;
+        temp.localEulerAngles = rotationInHand;
+        temp.localScale = scaleInHand;
+
+    }
+    public void ToBackpack(Item _item, Unit _unit)
+    {
+        Transform temp = _item.mesh;
+        temp.SetParent(_unit.transform.Find(InBackpack));
+        temp.localPosition = positionInBackpack;
+        temp.localEulerAngles = rotationInBackpack;
+        temp.localScale = scaleInBackpack;
     }
 }

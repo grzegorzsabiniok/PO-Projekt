@@ -6,6 +6,7 @@ public class Structure : MonoBehaviour,IInfo {
     public Transform windowPrefab;
     public string useAnimation;
     public float timeAnimation;
+    public ItemPatern neededItem;
     public void Show()
     {
         Transform temp = Transform.Instantiate(windowPrefab);
@@ -91,30 +92,16 @@ void OnDrawGizmosSelected()
     Gizmos.color = Color.red;
         for (int i = 0; i < grid.Length; i += 2)
         {
-            for (float x = grid[i].x; x < grid[i + 1].x; x++)
-            {
-                for (float y = grid[i].y; y < grid[i + 1].y; y++)
-                {
-                    for (float z = grid[i].z; z < grid[i + 1].z; z++)
-                    {
-                        Gizmos.DrawCube(transform.position + new Vector3(x, y+0.5f, z), new Vector3(1, 1, 1));
-                    }
-                }
-            }
+            
+            Gizmos.DrawCube(transform.position + new Vector3((grid[i + 1].x -1- grid[i].x) / 2.0f + grid[i].x, (grid[i+1].y-grid[i].y)/2.0f + grid[i].y, (grid[i + 1].z-1 - grid[i].z) / 2.0f + grid[i].z), new Vector3(grid[i + 1].x - grid[i].x, grid[i + 1].y - grid[i].y, grid[i + 1].z - grid[i].z));
+            
         }
         Gizmos.color = Color.blue;
         if (fundations.Length > 0)
-            for (float x = fundations[0].x; x < fundations[1].x; x++)
-        {
-            for (float y = fundations[0].y; y < fundations[1].y; y++)
-            {
-                for (float z = fundations[0].z; z < fundations[1].z; z++)
-                {
-                    Gizmos.DrawCube(transform.position + new Vector3(x, y + 0.5f, z), new Vector3(1, 1, 1));
-                }
-            }
-        }
-    }
+            Gizmos.DrawCube(transform.position + new Vector3((fundations[1].x - 1 - fundations[0].x) / 2.0f + fundations[0].x, (fundations[1].y - fundations[0].y) / 2.0f + fundations[0].y, (fundations[1].z - 1 - fundations[0].z) / 2.0f + fundations[0].z), new Vector3(fundations[1].x - fundations[0].x, fundations[1].y - fundations[0].y, fundations[1].z - fundations[0].z));
+
+    
+}
 
     // Update is called once per frame
     public virtual void Use(Unit _user)

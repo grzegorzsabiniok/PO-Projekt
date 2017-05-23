@@ -37,7 +37,7 @@ public class Initializer : MonoBehaviour {
                 if (Main.main.GetTreePosition(x, y))
                 {
                     Transform temp = Transform.Instantiate(treePrefab);
-                    temp.position = new Vector3(x+0.5f, Main.main.GetMapHeight(x, y),y+0.5f);
+                    temp.position = new Vector3(x, Main.main.GetMapHeight(x, y),y);
                     if (!temp.GetComponent<Structure>().CanPlace())
                     {
                         Destroy(temp.gameObject);

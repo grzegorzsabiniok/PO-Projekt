@@ -16,6 +16,7 @@ public class Willage : MonoBehaviour {
 	// Update is called once per frame
     public Task GetTask(Vector3 _position)
     {
+        print(_position+" "+tasks[0].position);
         Task temp = tasks.FirstOrDefault(x => x.position == _position);
         if (temp != null)
         {

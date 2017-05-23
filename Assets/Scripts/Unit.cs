@@ -39,6 +39,41 @@ public class Unit : MonoBehaviour, IInfo {
                 items[0].patern.Put(items[0], this);
         }
     }
+    public int CheckItem(ItemPatern _patern)
+    {
+        int temp = -1;
+        for(int i = 0; i < items.Length; i++)
+        {
+            if(items[i] != null)
+            if(items[i].patern == _patern)
+            {
+                temp = i;
+            }
+        }
+        return temp;
+    }
+    public void UseItem(ItemPatern _patern)
+    {
+        for (int i = 0; i < items.Length; i++)
+        {
+            if (items[i] != null)
+                if (items[i].patern == _patern)
+                {
+                    items[i].patern.Use(items[i], this);
+                    return;
+                }
+        }
+    }
+    public void ItemToBackpack()
+    {
+        for (int i = 0; i < items.Length; i++)
+        {
+            if (items[i] != null)
+            {
+                items[i].patern.ToBackpack(items[i], this);
+            }
+        }
+    }
     public void DropItem()
     {
         items[0].patern.Drop(transform.position,items[0]);
@@ -122,7 +157,7 @@ public class Unit : MonoBehaviour, IInfo {
     */
     void OnDrawGizmosSelected()
     {
-        /*
+        
         Gizmos.color = Color.white;
         foreach (Vector3 i in foots.Keys)
         {
@@ -131,7 +166,7 @@ public class Unit : MonoBehaviour, IInfo {
                 Gizmos.color = Color.red;
             Gizmos.DrawSphere(i, 0.5f);
         }
-         */   
+           
 
     }
     int lastIndex = 0, firstIndex = 0;

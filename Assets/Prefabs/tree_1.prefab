@@ -81,7 +81,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1395964734517320}
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -7.5, y: 0, z: -2.5}
+  m_LocalPosition: {x: -8.21, y: 0, z: -1.98}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4912110543943822}
@@ -94,7 +94,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1617418458634052}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 69.90066, y: 14.567425, z: 190.32909}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
   m_Children:
   - {fileID: 4546841000129260}
@@ -156,6 +156,8 @@ MonoBehaviour:
     type: 2}
   useAnimation: chop
   timeAnimation: 3
+  neededItem: {fileID: 114094845147644524, guid: 16ec26c1d95208b41a9f9076796976a0,
+    type: 2}
   name: Oak
   grid:
   - {x: 0, y: 0, z: 0}

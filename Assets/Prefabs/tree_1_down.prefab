@@ -20,6 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4234442025328332}
   - component: {fileID: 114983840557337258}
+  - component: {fileID: 114168353173310660}
   m_Layer: 0
   m_Name: tree_1_down
   m_TagString: Untagged
@@ -110,6 +111,29 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1731159514159588}
   m_Mesh: {fileID: 4300000, guid: b03fcbf4564264d4d90d02a8335e994f, type: 3}
+--- !u!114 &114168353173310660
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1176792218850200}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 271002c39ee49e2479af50bb4f4c8fe2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  windowPrefab: {fileID: 0}
+  useAnimation: 
+  timeAnimation: 0
+  neededItem: {fileID: 0}
+  name: 
+  grid:
+  - {x: 0, y: 0, z: 0}
+  - {x: 1, y: 1, z: 1}
+  fundations:
+  - {x: -1, y: -1, z: -1}
+  - {x: 2, y: 0, z: 2}
+  interaction: {fileID: 0}
 --- !u!114 &114983840557337258
 MonoBehaviour:
   m_ObjectHideFlags: 1

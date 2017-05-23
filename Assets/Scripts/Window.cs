@@ -25,7 +25,7 @@ public class Window : MonoBehaviour{
             new Go(new Vector3(60,15,182)),
             new Drop()
             })));
-            Main.main.SetBlock(target.GetComponent<Tree>().interaction.position, -100);
+            Main.main.SetBlock(Main.Normalize(target.GetComponent<Tree>().interaction.position), -100);
         }
     }
 }

@@ -13,23 +13,31 @@ public Use(Transform _target)
     public override void Start()
     {
         
-        if (owner.transform.position == target.GetComponent<Structure>().interaction.position)
+        if (Main.Normalize(owner.transform.position) == Main.Normalize(target.GetComponent<Structure>().interaction.position))
         {
             owner.transform.rotation = target.GetComponent<Structure>().interaction.rotation;
             owner.SetAnimation(target.GetComponent<Structure>().useAnimation);
+            owner.UseItem(target.GetComponent<Structure>().neededItem);
         }
     }
     public override bool Update()
     {
-
-        if (owner.transform.position == target.GetComponent<Structure>().interaction.position)
+        if(owner.CheckItem(target.GetComponent<Structure>().neededItem) == -1)
         {
+            succes = false;
+            return false;
+            
+        }
+        if (Main.Normalize(owner.transform.position) == Main.Normalize(target.GetComponent<Structure>().interaction.position))
+        {
+            
             animationTime += Time.deltaTime;
             if (animationTime > target.GetComponent<Structure>().timeAnimation)
             {
                 
                 target.GetComponent<Structure>().Use(owner);
                 owner.SetAnimation("idle");
+                owner.ItemToBackpack();
                 return false;
             }
         }

@@ -9,7 +9,7 @@ public class Task {
     public Task(Vector3 _position,Action[] actions)
     {
         owner = null;
-        position = _position;
+        position = Main.Normalize(_position);
         toDo = new List<Action>(actions);
     }
 
