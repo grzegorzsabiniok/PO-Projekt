@@ -305,7 +305,7 @@ MonoBehaviour:
   mapSeed: 5
   mapSize: {x: 6, y: 1, z: 6}
   mapAmplitude: 50
-  mapCubature: 5
+  mapCubature: 1
   mapHeight: 5
   mapLevelsCount: 5
   mapLevelHeight: 5
@@ -810,6 +810,33 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 841282613}
+--- !u!1 &899118424 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1284449404459186, guid: 1027c127f4252b84196163a7836ad5ff,
+    type: 2}
+  m_PrefabInternal: {fileID: 1690630249}
+--- !u!114 &899118425
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 899118424}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 87279787e35a9c94e81d9775b6126053, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  axe: {fileID: 114094845147644524, guid: 16ec26c1d95208b41a9f9076796976a0, type: 2}
+  shield: {fileID: 114751101392663100, guid: 0b9539957a7d75044b70acb9fd6db513, type: 2}
+  portrait: {fileID: 21300000, guid: 350ce62ccd3f45441b93e9992421644b, type: 3}
+  windowPrefab: {fileID: 224026623229737198, guid: a82c969d529ff544281069f2a580bf95,
+    type: 2}
+  species: Ratel
+  speed: 1
+  infoTitle: 
+  infoDesc: 
+  firstName: Zbigniew
+  lastName: Wodecki
 --- !u!1001 &906093105
 Prefab:
   m_ObjectHideFlags: 0
@@ -1468,6 +1495,103 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: -20}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1001 &1690630249
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4913151385119924, guid: 1027c127f4252b84196163a7836ad5ff, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 61
+      objectReference: {fileID: 0}
+    - target: {fileID: 4913151385119924, guid: 1027c127f4252b84196163a7836ad5ff, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 4913151385119924, guid: 1027c127f4252b84196163a7836ad5ff, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 182
+      objectReference: {fileID: 0}
+    - target: {fileID: 4913151385119924, guid: 1027c127f4252b84196163a7836ad5ff, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4913151385119924, guid: 1027c127f4252b84196163a7836ad5ff, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4913151385119924, guid: 1027c127f4252b84196163a7836ad5ff, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4913151385119924, guid: 1027c127f4252b84196163a7836ad5ff, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4913151385119924, guid: 1027c127f4252b84196163a7836ad5ff, type: 2}
+      propertyPath: m_RootOrder
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 1774480415506602, guid: 1027c127f4252b84196163a7836ad5ff, type: 2}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1641377311489482, guid: 1027c127f4252b84196163a7836ad5ff, type: 2}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1899614289957136, guid: 1027c127f4252b84196163a7836ad5ff, type: 2}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1284449404459186, guid: 1027c127f4252b84196163a7836ad5ff, type: 2}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1284553800583248, guid: 1027c127f4252b84196163a7836ad5ff, type: 2}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1642280756742074, guid: 1027c127f4252b84196163a7836ad5ff, type: 2}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1562236965164656, guid: 1027c127f4252b84196163a7836ad5ff, type: 2}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1284449404459186, guid: 1027c127f4252b84196163a7836ad5ff, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1284449404459186, guid: 1027c127f4252b84196163a7836ad5ff, type: 2}
+      propertyPath: m_Name
+      value: Ratel2 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 33344065804896718, guid: 1027c127f4252b84196163a7836ad5ff,
+        type: 2}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 4300000, guid: edcde5a9fa4ebe746a7f62293d2e4457, type: 3}
+    - target: {fileID: 4173125446882204, guid: 1027c127f4252b84196163a7836ad5ff, type: 2}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4235349390434386, guid: 1027c127f4252b84196163a7836ad5ff, type: 2}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4240345229710508, guid: 1027c127f4252b84196163a7836ad5ff, type: 2}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 0}
+    - {fileID: 114722103859141718, guid: 1027c127f4252b84196163a7836ad5ff, type: 2}
+  m_ParentPrefab: {fileID: 100100000, guid: 1027c127f4252b84196163a7836ad5ff, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1 &1704549863
 GameObject:
   m_ObjectHideFlags: 0
