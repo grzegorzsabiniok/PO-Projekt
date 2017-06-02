@@ -17,15 +17,14 @@ public class Window : MonoBehaviour{
     {
         if (Main.main.GetBlock(target.GetComponent<Tree>().interaction.position) == 0)
         {
-            Willage.willage.AddTask((
-                new Task(target.GetComponent<Tree>().interaction.position,
-                new Action[] {
-            //new Go(target.GetComponent<Tree>().interaction.position),
-            new Use(target),
-            new Go(new Vector3(60,15,182)),
-            new Drop()
-            })));
-            Main.main.SetBlock(Main.Normalize(target.GetComponent<Tree>().interaction.position), -100);
+            target.GetComponent<Tree>().Chop();
+        }
+    }
+    public void Craft()
+    {
+        if (Main.main.GetBlock(target.GetComponent<WorkShop>().interaction.position) <=0)
+        {
+            target.GetComponent<WorkShop>().AddTask();
         }
     }
 }

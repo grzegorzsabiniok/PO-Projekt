@@ -2,18 +2,20 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Tree : Structure {
-    public Transform trunk;
-    public ItemPatern wood;
+public class WorkShop : Structure {
+    public ItemPatern[] items;
+    public List<Item> storage = new List<Item>();
     public override void Use(Unit _user)
     {
-        _user.AddItem(new Item(wood));
-        Transform temp = Transform.Instantiate(trunk);
-        temp.position = transform.position;
-        DeleteColiders();
-        Destroy(gameObject);
+        _user.AddItem(new Item(items[0]));
+        //storage.RemoveAt(0);
     }
-    public void Chop()
+    public override void Use(Unit _user, int type)
+    {
+        storage.Add(_user.items[0]);
+        _user.items[0] = null;
+    }
+    public void AddTask()
     {
         Go temp = new Go();
         Willage.willage.AddTask((

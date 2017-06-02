@@ -27,7 +27,7 @@ public class Willage : MonoBehaviour {
     }
     public void AddTask(Task _task)
     {
-        print("dodalem taska");
+        print("dodalem taska"+_task.position);
         tasks.Add(_task);
     }
 	void Update () {

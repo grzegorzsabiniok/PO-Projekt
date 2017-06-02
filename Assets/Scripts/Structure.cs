@@ -105,4 +105,8 @@ void OnDrawGizmosSelected()
     {
 
     }
+    public virtual void Use(Unit _user,int type)
+    {
+
+    }
 }

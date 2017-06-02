@@ -13,31 +13,32 @@ public Use(Transform _target)
     public override void Start()
     {
         
-        if (Main.Normalize(owner.transform.position) == Main.Normalize(target.GetComponent<Structure>().interaction.position))
+        if (Main.Normalize(task.owner.transform.position) == Main.Normalize(target.GetComponent<Structure>().interaction.position))
         {
-            owner.transform.rotation = target.GetComponent<Structure>().interaction.rotation;
-            owner.SetAnimation(target.GetComponent<Structure>().useAnimation);
-            owner.UseItem(target.GetComponent<Structure>().neededItem);
+            task.owner.transform.rotation = target.GetComponent<Structure>().interaction.rotation;
+            task.owner.SetAnimation(target.GetComponent<Structure>().useAnimation);
+            task.owner.UseItem(target.GetComponent<Structure>().neededItem);
         }
     }
     public override bool Update()
     {
-        if(owner.CheckItem(target.GetComponent<Structure>().neededItem) == -1)
+        if(target.GetComponent<Structure>().neededItem != null)
+        if (task.owner.CheckItem(target.GetComponent<Structure>().neededItem) == -1)
         {
             succes = false;
             return false;
             
         }
-        if (Main.Normalize(owner.transform.position) == Main.Normalize(target.GetComponent<Structure>().interaction.position))
+        if (Main.Normalize(task.owner.transform.position) == Main.Normalize(target.GetComponent<Structure>().interaction.position))
         {
             
             animationTime += Time.deltaTime;
             if (animationTime > target.GetComponent<Structure>().timeAnimation)
             {
                 
-                target.GetComponent<Structure>().Use(owner);
-                owner.SetAnimation("idle");
-                owner.ItemToBackpack();
+                target.GetComponent<Structure>().Use(task.owner);
+                task.owner.SetAnimation("idle");
+                task.owner.ItemToBackpack();
                 return false;
             }
         }

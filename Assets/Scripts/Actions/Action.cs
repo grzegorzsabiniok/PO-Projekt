@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Action {
-    public Unit owner;
     public string name;
+    public Task task;
     bool firstTime = true;
     public bool Act()
     {
@@ -24,9 +24,9 @@ public class Action {
     {
         return false;
     }
-    public virtual void Take(Unit _owner)
+    public virtual void Take(Task _task)
     {
-        owner = _owner;
+        task = _task;
     }
     public virtual bool Success()
     {

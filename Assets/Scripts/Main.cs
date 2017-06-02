@@ -25,6 +25,7 @@ public class Main : MonoBehaviour {
     //0-air
     //-1 collider
     //-2 - ladder
+    //-3 - stockpile
     //-100 - interest point
     /// </summary>
     void Awake () {

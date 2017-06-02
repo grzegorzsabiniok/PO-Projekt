@@ -11,6 +11,7 @@ public class Unit : MonoBehaviour, IInfo {
     public Transform windowPrefab;
     public string species;
     public List<Action> actions = new List<Action>();
+    public Task currentTask;
     public float speed = 1;
     // info
     public string infoTitle, infoDesc;
@@ -100,12 +101,21 @@ public class Unit : MonoBehaviour, IInfo {
 
     }
 	void Update () {
-        infoDesc = actions.Count.ToString();
+
+        /*
         if (actions.Count > 0)
         {
             if (!actions[0].Act())
             {
                 actions.RemoveAt(0);
+            }
+        }
+        */
+        if (currentTask !=null)
+        {
+            if (!currentTask.Act())
+            {
+                currentTask = null;
             }
         }
         else
@@ -118,9 +128,16 @@ public class Unit : MonoBehaviour, IInfo {
                     StartSearchJob();
                     searching = true;
                 }
-                Stopwatch sw = Stopwatch.StartNew();
-                SearchJob();
-                sw.Stop();
+                Vector3[] temp = Search(-100);
+                if (temp != null)
+                {
+                    Task temp2 = Willage.willage.GetTask(temp[0]);
+                    if (temp2 != null)
+                    {
+
+                        temp2.Take(this, temp);
+                    }
+                }
             }
             else
             {
@@ -145,16 +162,6 @@ public class Unit : MonoBehaviour, IInfo {
                 break;
             }
     }
-    /*
-    void OnDrawGizmosSelected()
-    {
-        Gizmos.color = Color.white;
-        for (int i = 0; i < path.Length-1; i++)
-        {
-            Gizmos.DrawLine(path[i]+new Vector3(0.5f,0.5f,0.5f), path[i+1] + new Vector3(0.5f, 0.5f, 0.5f));
-        }
-    }
-    */
     void OnDrawGizmosSelected()
     {
         
@@ -176,19 +183,19 @@ public class Unit : MonoBehaviour, IInfo {
         lastIndex = 0;
         firstIndex = 0;
         foots.Clear();
-        //foots[0] = transform.position;
         foots.Add(transform.position, new Vector3(-1,-1,-1));
     }
-    void SearchJob()
+
+    Vector3[] Search(int _target)
     {
         Vector3 curent;
         for (int i = 0; i < 10; i++)
         {
-            if (firstIndex >= foots.Count())
+            if (firstIndex >= foots.Count)
             {
                 print("nie znalazlem :(");
                 searching = false;
-                return;
+                return null;
             }
             curent = foots.Keys.ElementAt(firstIndex);
             firstIndex++;
@@ -204,12 +211,12 @@ public class Unit : MonoBehaviour, IInfo {
                         if (!foots.ContainsKey(temp)&& Go.CanGo(temp))
                         {
                             foots.Add(temp, curent);
-                            if (Main.main.GetBlock(temp) == -100)
+                            if (Main.main.GetBlock(temp) == _target)
                             {
-                                Task temp2 = Willage.willage.GetTask(temp);
-                                if (temp2 != null)
-                                {
-                                    searching = false;
+                                //Task temp2 = Willage.willage.GetTask(temp);
+                               // if (temp2 != null)
+                                //{
+                                 //   searching = false;
                                     List<Vector3> path = new List<Vector3>();
                                     Vector3 t3=temp;
                                     while(foots[t3] != new Vector3(-1, -1, -1))
@@ -217,8 +224,8 @@ public class Unit : MonoBehaviour, IInfo {
                                         path.Add(t3);
                                         t3 = foots[t3];
                                     }
-                                    temp2.Take(this,path.ToArray());
-                                    return;
+                                   // temp2.Take(this,path.ToArray());
+                                    return path.ToArray();
                                 }
                             }
                         }
@@ -226,22 +233,8 @@ public class Unit : MonoBehaviour, IInfo {
                 }
             }
 
-
+            return null;
         }
-
-    }
-    bool CanGo(Vector3 _position)
-    {
-        if ((Main.main.GetBlock(_position) == 0 || Main.main.GetBlock(_position) == -2 || Main.main.GetBlock(_position) == -100)
-            && (Main.main.GetBlock(_position - new Vector3(0, 1, 0)) != 0 || Main.main.GetBlock(_position - new Vector3(0, 1, 0)) == -2 || Main.main.GetBlock(_position - new Vector3(0, 1, 0)) == -100)
-            && Main.main.GetBlock(_position - new Vector3(0, 1, 0)) != 1//zakomentuj zeby wlaczyc jezus_mode
-            && (Main.main.GetBlock(_position + new Vector3(0, 1, 0)) == 0 || Main.main.GetBlock(_position + new Vector3(0, 1, 0)) == -2) || Main.main.GetBlock(_position + new Vector3(0, 1, 0)) == -100)
-        {
-            return true;
-        }
-        else
-        {
-            return false;
-        }
-    }
+        
+    
 }

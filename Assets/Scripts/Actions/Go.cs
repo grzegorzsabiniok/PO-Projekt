@@ -4,20 +4,13 @@ using UnityEngine;
 using System.Linq;
 
 public class Go : Action {
-    Vector3[] path = new Vector3[0];
+    public Vector3[] path = new Vector3[0];
     int pathPosition = 0;
     Vector3 target;
-    public Go(Unit _owner,Vector3 _target)
+    public Go() { }
+    public Go(Vector3[] _path)
     {
         name = "Go";
-        owner = _owner;
-        //owner.Go(_target);
-        target = _target;
-    }
-    public Go(Unit _owner, Vector3[] _path)
-    {
-        name = "Go";
-        owner = _owner;
         //owner.Go(_target);
         path = _path;
         pathPosition = path.Length - 1;
@@ -29,16 +22,18 @@ public class Go : Action {
     }
     public override void Start()
     {
-        if (pathPosition == 0) { 
+        if (path.Length == 0) { 
         SetPath(target);
-        pathPosition = path.Length - 1;
+        
     }
-        owner.SetAnimation("walk");
+        MonoBehaviour.print(path.Length);
+        pathPosition = path.Length - 1;
+        task.owner.SetAnimation("walk");
         
     }
     public override bool Success()
     {
-        if(owner.transform.position == target)
+        if (task.owner.transform.position == target)
         {
             return true;
         }
@@ -53,12 +48,12 @@ public class Go : Action {
         {
             if (CanGo(path[pathPosition]))
             {
-                owner.transform.LookAt(path[pathPosition]);
-                owner.transform.localEulerAngles = new Vector3(0, owner.transform.localEulerAngles.y, 0);
-                owner.transform.position = Vector3.MoveTowards(owner.transform.position, path[pathPosition], owner.speed * Time.deltaTime * 2 * Main.main.unitSpeed);
-                if (Vector3.Distance(owner.transform.position, path[pathPosition]) < 0.01f)
+                task.owner.transform.LookAt(path[pathPosition]);
+                task.owner.transform.localEulerAngles = new Vector3(0, task.owner.transform.localEulerAngles.y, 0);
+                task.owner.transform.position = Vector3.MoveTowards(task.owner.transform.position, path[pathPosition], task.owner.speed * Time.deltaTime * 2 * Main.main.unitSpeed);
+                if (Vector3.Distance(task.owner.transform.position, path[pathPosition]) < 0.01f)
                 {
-                    owner.transform.position = path[pathPosition];
+                    task.owner.transform.position = path[pathPosition];
                     pathPosition--;
                     
                 }
@@ -71,7 +66,7 @@ public class Go : Action {
         }
         else
         {
-            owner.SetAnimation("idle");
+            task.owner.SetAnimation("idle");
             return false;
         }
         return true;
@@ -93,7 +88,7 @@ public class Go : Action {
         _target = new Vector3(Mathf.Floor(_target.x), Mathf.Floor(_target.y), Mathf.Floor(_target.z));
         Dictionary<Vector3, Waypoint> waypoint = new Dictionary<Vector3, Waypoint>();
         Vector3 curent;
-        curent = new Vector3( Mathf.Floor(owner.transform.position.x), Mathf.Floor(owner.transform.position.y), Mathf.Floor(owner.transform.position.z));
+        curent = new Vector3( Mathf.Floor(task.owner.transform.position.x), Mathf.Floor(task.owner.transform.position.y), Mathf.Floor(task.owner.transform.position.z));
         waypoint.Add(curent, new Waypoint(10000, Vector3.zero));
         for (int i = 0; i < 2000; i++)
         {
@@ -124,7 +119,7 @@ public class Go : Action {
                         if (!waypoint.ContainsKey(temp) && CanGo(temp))
                         {
 
-                            waypoint.Add(temp, new Waypoint(Vector3.Distance(temp, _target)+ Vector3.Distance(temp, owner.transform.position), curent));
+                            waypoint.Add(temp, new Waypoint(Vector3.Distance(temp, _target)+ Vector3.Distance(temp, task.owner.transform.position), curent));
                             //waypoint.Add(temp, new Waypoint(Vector3.Distance(temp, _target) + Vector3.Distance(temp, curent)+waypoint[curent].value, curent));
 
                         }
@@ -142,7 +137,7 @@ public class Go : Action {
     }
     public static bool CanGo(Vector3 _position)
     {
-        if ((Main.main.GetBlock(_position) == 0 || Main.main.GetBlock(_position) == -2 || Main.main.GetBlock(_position) == -100)
+        if ((Main.main.GetBlock(_position) <2 && Main.main.GetBlock(_position) != -1)
             && (Main.main.GetBlock(_position - new Vector3(0, 1, 0)) != 0 || Main.main.GetBlock(_position - new Vector3(0, 1, 0)) == -2)
             && Main.main.GetBlock(_position - new Vector3(0, 1, 0)) != 1//zakomentuj zeby wlaczyc jezus_mode
             && (Main.main.GetBlock(_position + new Vector3(0, 1, 0)) == 0 || Main.main.GetBlock(_position + new Vector3(0, 1, 0)) == -2))
