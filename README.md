@@ -7,5 +7,4 @@ gra bedzie sie opierac na wyznaczaniu zadan mieszkancom (w tej roli antropomorfi
 ## harmonogram
 1. operacje na przedmiotach (podnoszenie/upuszczanie)
 2. obsluga urzadzen i wytwarzanie przedmiotow
-3. uprawa
-4. modyfikacja terenu
+3. modyfikacja terenu
