@@ -15,17 +15,20 @@ public class Tree : Structure {
     }
     public void Chop()
     {
-        Go temp = new Go();
+        
+        Search search = new Search(POI.Type.stockpile);
+        Go temp = new Go(search);
         Willage.willage.AddTask((
     new Task(Main.Normalize(interaction.position),
     new Action[] {
             //new Go(target.GetComponent<Tree>().interaction.position),
             new Use(transform),
-            new Search(temp,-3),
+            search,
             //new Go(new Vector3(60,15,182)),
             temp,
-            new Drop()
+            new Drop(search,0)
 })));
         Main.main.SetBlock(Main.Normalize(interaction.position), -100);
+        Main.main.AddPOI(new POIWork(neededItem));
     }
 }

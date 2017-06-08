@@ -4,7 +4,7 @@ using System.Linq;
 
 public class Chunk : MonoBehaviour
 {
-    public bool sliced = false;
+    public bool sliced = false,render = false;
     public int textureCount;
     struct Level
     {
@@ -52,14 +52,26 @@ public class Chunk : MonoBehaviour
     void Update()
     {
         x++;
-        if(x%(Main.main.mapSize.x* Main.main.mapSize.x)==(int) (chunkNumber.x*Main.main.mapSize.x + chunkNumber.y))
-        //if(GetComponent<MeshRenderer>().isVisible)
-        if (sliced)
+        if (x % (Main.main.mapSize.x * Main.main.mapSize.x) == (int)(chunkNumber.x * Main.main.mapSize.x + chunkNumber.y))
         {
-            
-            sliced = false;
-            Slice();
+            //if(GetComponent<MeshRenderer>().isVisible)
+            if (render)
+            {
+                Render();
+                render = false;
+            }
+            if (sliced)
+            {
+
+                sliced = false;
+                Slice();
+            }
         }
+    }
+    public void Actualize()
+    {
+        render = true;
+        sliced = true;
     }
     void Awake()
     {

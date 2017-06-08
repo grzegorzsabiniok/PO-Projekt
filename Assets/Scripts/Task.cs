@@ -33,7 +33,7 @@ public class Task {
     public void Take(Unit _owner)
     {
         owner = _owner;
-        owner.currentTask = this;
+        owner.tasks.Add(this);
     }
     public void Take(Unit _owner,Vector3[] path)
     {

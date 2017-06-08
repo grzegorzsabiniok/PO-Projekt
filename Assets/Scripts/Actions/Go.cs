@@ -7,6 +7,7 @@ public class Go : Action {
     public Vector3[] path = new Vector3[0];
     int pathPosition = 0;
     Vector3 target;
+    Search search;
     public Go() { }
     public Go(Vector3[] _path)
     {
@@ -20,8 +21,17 @@ public class Go : Action {
         target = _target;
         name = "Go";
     }
+    public Go(Search _search)
+    {
+        name = "Go";
+        search = _search;
+    }
     public override void Start()
     {
+        if(search != null)
+        {
+            path = search.path;
+        }
         if (path.Length == 0) { 
         SetPath(target);
         

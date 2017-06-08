@@ -5,7 +5,7 @@ using UnityEngine;
 public class Stockpile : MonoBehaviour {
 
     public Transform prefab;
-    Dictionary<Vector3, Item> slots = new Dictionary<Vector3, Item>();
+    public Dictionary<Vector3, Item> slots = new Dictionary<Vector3, Item>();
     public void AddSlots(Vector3 start, Vector3 end)
     {
         Vector3 min = new Vector3(Mathf.Min(start.x, end.x), 0, Mathf.Min(start.z, end.z));
@@ -15,7 +15,8 @@ public class Stockpile : MonoBehaviour {
             for (int y = (int)min.z; y <= (int)max.z; y++)
             {
                 slots.Add(new Vector3(x, start.y, y), null);
-                Main.main.SetBlock(new Vector3(x, start.y, y), -3);
+                Main.main.SetBlock(new Vector3(x, start.y, y), -100);
+                Main.main.AddPOI(new POIStockpile(this, new Vector3(x, start.y, y)));
             }
         }
         Show();

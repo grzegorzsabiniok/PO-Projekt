@@ -28,11 +28,30 @@ public class Main : MonoBehaviour {
     //-3 - stockpile
     //-100 - interest point
     /// </summary>
+    public List<POI> poi = new List<POI>();
     void Awake () {
         main = this;
         map = new int[(int)(chunkSize.x * mapSize.x), (int)(chunkSize.y * mapSize.y), (int)(chunkSize.z * mapSize.z)];
         Generate();
 	}
+
+    public void AddPOI(POI _poi)
+    {
+        poi.Add(_poi);
+    }
+    public POI CheckPOI(Vector3 _position, Unit _owner, POI.Type _type)
+    {
+        _position = Normalize(_position);
+        for(int i = 0; i < poi.Count; i++)
+        {
+            if(poi[i].position == _position && poi[i].Match(_owner, _type))
+            {
+                return poi[i];
+            }
+        }
+        return null;
+    }
+
     public void Generate()
     {
         for (int x = 0; x < map.GetLength(0); x++)
@@ -88,6 +107,10 @@ public class Main : MonoBehaviour {
     public void SetBlock(Vector3 _position,int _block)
     {
         map[(int)_position.x, (int)_position.y, (int)_position.z] = _block;
+        if(_block > -1)
+        {
+            GetChunk(_position).Actualize();
+        }
     }
     public int GetTreeRange()
     {

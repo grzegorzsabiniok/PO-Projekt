@@ -11,7 +11,7 @@ public class Unit : MonoBehaviour, IInfo {
     public Transform windowPrefab;
     public string species;
     public List<Action> actions = new List<Action>();
-    public Task currentTask;
+    public List<Task> tasks = new List<Task>();
     public float speed = 1;
     // info
     public string infoTitle, infoDesc;
@@ -111,11 +111,11 @@ public class Unit : MonoBehaviour, IInfo {
             }
         }
         */
-        if (currentTask !=null)
+        if (tasks.Count >0)
         {
-            if (!currentTask.Act())
+            if (!tasks[0].Act())
             {
-                currentTask = null;
+                tasks.RemoveAt(0);
             }
         }
         else
