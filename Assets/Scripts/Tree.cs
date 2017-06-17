@@ -18,17 +18,24 @@ public class Tree : Structure {
         
         Search search = new Search(POI.Type.stockpile);
         Go temp = new Go(search);
-        Willage.willage.AddTask((
+        /*Willage.willage.AddTask((
     new Task(Main.Normalize(interaction.position),
     new Action[] {
-            //new Go(target.GetComponent<Tree>().interaction.position),
             new Use(transform),
             search,
-            //new Go(new Vector3(60,15,182)),
             temp,
             new Drop(search,0)
 })));
+*/
+Task chop = new Task(Main.Normalize(interaction.position),
+    new Action[] {
+        new Go(Main.Normalize(interaction.position)),
+            new Use(transform),
+            search,
+            temp,
+            new Drop(search,0)
+});
         Main.main.SetBlock(Main.Normalize(interaction.position), -100);
-        Main.main.AddPOI(new POIWork(neededItem));
+        Main.main.AddPOI(new POIWork(neededItem,chop, Main.Normalize(interaction.position)));
     }
 }

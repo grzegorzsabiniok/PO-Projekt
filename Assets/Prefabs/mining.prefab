@@ -21,9 +21,9 @@ GameObject:
   - component: {fileID: 4796273496975554}
   - component: {fileID: 33774794964685252}
   - component: {fileID: 23474210502505754}
-  - component: {fileID: 114695515397595124}
+  - component: {fileID: 114434621355516670}
   m_Layer: 0
-  m_Name: chop
+  m_Name: mining
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -81,7 +81,7 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1598546261116188}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &114695515397595124
+--- !u!114 &114434621355516670
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -89,11 +89,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1598546261116188}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2e7adbb3697d7ca4ea83dcb95fe467c2, type: 3}
+  m_Script: {fileID: 11500000, guid: 853decee63ca2d842ba4e0c3ffa8fd48, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   show: 0
-  ok: {r: 0.1592236, g: 0.16294305, b: 0.6985294, a: 0.503}
-  nook: {r: 0.6691177, g: 0.18203938, b: 0.18203938, a: 0.491}
+  ok: {r: 0.7205882, g: 0.47167102, b: 0.026492195, a: 0.297}
+  nook: {r: 0.67058825, g: 0.18039216, b: 0.18039216, a: 0.409}
   start: {x: 0, y: 0, z: 0}
   end: {x: 0, y: 0, z: 0}

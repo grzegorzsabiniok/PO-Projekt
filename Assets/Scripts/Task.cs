@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Task {
+    
     public Vector3 position;
     public Unit owner;
     int curent;
@@ -12,6 +13,15 @@ public class Task {
     {
         owner = null;
         position = Main.Normalize(_position);
+        toDo = new List<Action>(actions);
+        for (int i = 0; i < toDo.Count; i++)
+        {
+            toDo[i].Take(this);
+        }
+    }
+    public Task(Action[] actions)
+    {
+        owner = null;
         toDo = new List<Action>(actions);
         for (int i = 0; i < toDo.Count; i++)
         {
@@ -42,4 +52,9 @@ public class Task {
         toDo.Insert(0, temp);
         Take(_owner);
     }
+
+
+
+
+
 }

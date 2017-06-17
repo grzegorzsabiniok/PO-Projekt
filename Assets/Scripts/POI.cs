@@ -15,20 +15,36 @@ public enum Type
     {
         return true;
     }
+    public virtual bool Match(Unit _unit, Type _type,object[] _parameters)
+    {
+        return true;
+    }
 }
 
 public class POIWork : POI
 {
     ItemPatern item;
-    public POIWork(ItemPatern _item)
+    Task task;
+    public POIWork(ItemPatern _item,Task _task,Vector3 _position)
     {
+        task = _task;
+        position = _position;
         item = _item;
+        type = Type.work;
+    }
+    public POIWork()
+    {
+        item = null;
         type = Type.work;
     }
     public override bool Match(Unit _unit, Type _type)
     {
-       if(_unit.CheckItem(item) != -1 && _type == type)
+        task.Take(_unit);
+        if (_type != type) return false;
+
+       if(_unit.CheckItem(item) != -1 || item == null)
         {
+            
             return true;
         }
         return false;
@@ -45,8 +61,18 @@ public class POIStockpile : POI
     }
     public override bool Match(Unit _unit, Type _type)
     {
-        MonoBehaviour.print(stockpile.slots[position]);
+        if(type== _type)
         if (stockpile.slots[position] == null)
+        {
+            return true;
+
+        }
+        return false;
+    }
+    public override bool Match(Unit _unit, Type _type,object[] _paramters)
+    {
+        if (type == _type)
+            if (stockpile.slots[position].patern == (ItemPatern)_paramters[0])
         {
             return true;
 

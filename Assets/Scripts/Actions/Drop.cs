@@ -22,6 +22,7 @@ public Drop()
     }
     public override void Start()
     {
+        if(search.poi!=null)
         poi = search.poi;
     }
     public override bool Update()

@@ -17,17 +17,24 @@ public class WorkShop : Structure {
     }
     public void AddTask()
     {
-        Go temp = new Go();
+        Search searchNeed = new Search(items[2]);
+        Go go2 = new Go(searchNeed);
+        Search search = new Search(POI.Type.stockpile);
+        Go go = new Go(search);
         Willage.willage.AddTask((
-    new Task(Main.Normalize(interaction.position),
+    new Task(
     new Action[] {
-            //new Go(target.GetComponent<Tree>().interaction.position),
+        searchNeed,
+        go2,
+        new Go(Main.Normalize(interaction.position)),
             new Use(transform),
-            new Search(temp,-3),
-            //new Go(new Vector3(60,15,182)),
-            temp,
-            new Drop()
+            search,
+            go,
+            new Drop(search,0)
 })));
+
+
         Main.main.SetBlock(Main.Normalize(interaction.position), -100);
+        Main.main.AddPOI(new POIWork());
     }
 }

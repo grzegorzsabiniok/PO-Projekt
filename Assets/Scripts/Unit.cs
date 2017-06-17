@@ -120,7 +120,17 @@ public class Unit : MonoBehaviour, IInfo {
         }
         else
         {
+            if (Main.main.poi.Count > 0)
+            {
+                print("niech rozpocznie sie szukanie");
+                Task temp = new Task(new Action[]
+                {
+                new Search(POI.Type.work)
 
+                });
+                temp.Take(this);
+            }
+                /*
             if (Willage.willage.tasks.Count() > 0)
             {
                 if (!searching)
@@ -143,6 +153,7 @@ public class Unit : MonoBehaviour, IInfo {
             {
                 searching = false;
             }
+            */
         }
     }
     public void SetAnimation(string _name)

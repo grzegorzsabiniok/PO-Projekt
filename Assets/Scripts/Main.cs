@@ -46,12 +46,29 @@ public class Main : MonoBehaviour {
         {
             if(poi[i].position == _position && poi[i].Match(_owner, _type))
             {
-                return poi[i];
+                print(_type + "|" + poi[i].type);
+                POI temp = poi[i];
+                poi.RemoveAt(i);
+                return temp;
             }
         }
         return null;
     }
+    public POI CheckPOI(Vector3 _position, Unit _owner, POI.Type _type, object[] _paramteres)
+    {
+        _position = Normalize(_position);
+        for (int i = 0; i < poi.Count; i++)
+        {
+            if (poi[i].position == _position && poi[i].Match(_owner, _type,_paramteres))
+            {
+                POI temp = poi[i];
+                poi.RemoveAt(i);
+                return temp;
 
+            }
+        }
+        return null;
+    }
     public void Generate()
     {
         for (int x = 0; x < map.GetLength(0); x++)
